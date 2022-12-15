@@ -1,8 +1,8 @@
-package it.unisa.di.wrapper;
+package it.unisa.di.wrapper.positinoed;
 
 import it.unisa.di.table.BaseElement;
 
-abstract public class PositionedElement<T> extends BaseElement<T> {
+abstract public class PositionedElement<T> extends BaseElement<T> implements Cloneable{
     private int pos;
 
     public PositionedElement(T content, int pos) {
@@ -14,22 +14,21 @@ abstract public class PositionedElement<T> extends BaseElement<T> {
         return pos;
     }
 
-    public void subPos(PositionedElement<T> b) {
+    public void subPos(PositionedElement<?> b) {
         this.pos -= b.pos;
     }
+
     public void subPos(int pos) {
         this.pos -= pos;
-    }
-
-    public int getSubPos(PositionedElement<T> b) {
-        return this.pos - b.pos;
-    }
-    public int getSubPos(int pos) {
-        return this.pos - pos;
     }
 
     @Override
     public String toString() {
         return "[" + pos + "] " + super.toString();
+    }
+
+    @Override
+    public PositionedElement<T> clone() {
+        return (PositionedElement<T>) super.clone();
     }
 }

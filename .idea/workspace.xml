@@ -4,26 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34138342-7987-4fa7-b573-fada03f2a6fe" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/FloatContentComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/IntContentComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/PositionalCoparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/StringContentComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/BaseElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/FloatPositionedElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/IntPositionedElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/PositionedElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/StringPositionedElement.java" afterDir="false" />
+    <list default="true" id="34138342-7987-4fa7-b573-fada03f2a6fe" name="Changes" comment="fase 2 + refactoring consigliato da Teresa">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/base/FloatElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/base/IntElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/base/StringElement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/common/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/common/Mapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/FloatContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/FloatContentComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/IntContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/IntContentComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/PositionalCoparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/PositionalCoparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/StringContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/StringContentComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/BaseElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/BaseElement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Column.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Element.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Subtractable.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/FloatWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/IntWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/StringWrap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/FloatPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/FloatPositionedElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/IntPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/IntPositionedElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/PositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/PositionedElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/StringPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/StringPositionedElement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +59,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.unisa.di.wrapper.base" />
       <recent name="it.unisa.di.comparator" />
       <recent name="it.unisa.di.wrapper" />
     </key>
@@ -89,7 +87,7 @@
       <workItem from="1670852354872" duration="8344000" />
       <workItem from="1670919100954" duration="2022000" />
       <workItem from="1671024266882" duration="10699000" />
-      <workItem from="1671103478859" duration="5385000" />
+      <workItem from="1671103478859" duration="15477000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1669504719963</created>
@@ -119,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670862042663</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fase 2 + refactoring consigliato da Teresa">
+      <created>1671113592500</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1671113592500</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +143,20 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="fase 2 + refactoring consigliato da Teresa" />
+    <option name="LAST_COMMIT_MESSAGE" value="fase 2 + refactoring consigliato da Teresa" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="dart-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

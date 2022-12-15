@@ -1,4 +1,4 @@
-package it.unisa.di.wrapper;
+package it.unisa.di.wrapper.positinoed;
 
 import it.unisa.di.table.BaseElement;
 
@@ -8,7 +8,7 @@ public class IntPositionedElement extends PositionedElement<Integer> {
     }
 
     @Override
-    public void subContent(BaseElement<Integer> b) {
-        content -= b.getContent();
+    public void subContent(BaseElement<?> b) {
+        content -= (int) b.getContent();
     }
 }

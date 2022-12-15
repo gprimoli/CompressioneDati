@@ -1,22 +1,24 @@
 package it.unisa.di.table;
 
 import it.unisa.di.common.Helper;
-import it.unisa.di.common.Mapper;
 import it.unisa.di.common.Type;
 import it.unisa.di.comparator.FloatContentComparator;
 import it.unisa.di.comparator.IntContentComparator;
 import it.unisa.di.comparator.StringContentComparator;
-import it.unisa.di.wrapper.FloatPositionedElement;
-import it.unisa.di.wrapper.IntPositionedElement;
-import it.unisa.di.wrapper.StringPositionedElement;
+import it.unisa.di.wrapper.positinoed.FloatPositionedElement;
+import it.unisa.di.wrapper.positinoed.IntPositionedElement;
+import it.unisa.di.wrapper.positinoed.PositionedElement;
+import it.unisa.di.wrapper.positinoed.StringPositionedElement;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
-class Column {//L'assenza dello scoope non è un errore: Non voglio far usare questa classe al di fuori del package.
+class Column implements Cloneable {//L'assenza dello scoope non è un errore: Non voglio far usare questa classe al di fuori del package.
     private final String name;
     private final Type type;
-    private final List<BaseElement> elements;
+    private List<BaseElement<?>> elements;
 
     private Column(String name, Type type) {
         this.name = name;
@@ -29,13 +31,13 @@ class Column {//L'assenza dello scoope non è un errore: Non voglio far usare qu
     }
 
     public void addElement(String entry, int pos) {
-        BaseElement el;
-        switch (type) {
-            case Integer -> el = new IntPositionedElement(entry, pos);
-            case Float -> el = new FloatPositionedElement(entry, pos);
-            default -> el = new StringPositionedElement(entry, pos);
-        }
-        elements.add(el);
+        elements.add(
+                switch (type) {
+                    case Integer -> new IntPositionedElement(entry, pos);
+                    case Float -> new FloatPositionedElement(entry, pos);
+                    default -> new StringPositionedElement(entry, pos);
+                }
+        );
     }
 
     public void sort() {
@@ -46,31 +48,49 @@ class Column {//L'assenza dello scoope non è un errore: Non voglio far usare qu
         }
     }
 
-//    public static void subIntraColumn(Column c) {
-//        for (int i = 1; i < c.elements.size(); i++) {
-//            c.elements.get(i).subContent(c.elements.get(i - 1));
-//        }
-//    }
-//
-//    public static void subInterColumn(Column a, Column b) {
-//        int sizeA = a.elements.size();
-//        int sizeB = b.elements.size();
-//        for (int i = 0; i < sizeA; i++) {
-//            if (i >= sizeB) break;
-//            a.elements.get(i).subPos(b.elements.get(i));
-//        }
-//    }
-//
-//    public static void subInterColumn(Column a) {
-//        for (int i = 0; i < a.elements.size(); i++) {
-//            a.elements.get(i).subPos(i);
-//        }
-//    }
+    public static void SortAndFirstDifference(Column[] columns) {
+        int len = columns.length;
+        Column tmpA, tmpB = null, col; //A = actual; B = Back
+        for (int i = 0; i < len; i++) {
+            col = columns[i];
+            col.sort();
+
+            tmpA = col.clone();
+
+            for (int y = 0; y < col.elements.size(); y++) {
+                if (y > 0) {
+                    col.elements.get(y).subContent(tmpA.elements.get(y - 1));
+                }
+
+                if (i == 0) {
+                    ((PositionedElement<?>) col.elements.get(y)).subPos(y);
+                } else {
+                    ((PositionedElement<?>) col.elements.get(y)).subPos((PositionedElement<?>) tmpB.elements.get(y));
+                }
+            }
+
+            tmpB = tmpA;
+        }
+    }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Column Name: ").append(name).append("\nContent:\n");
         elements.forEach(sb::append);
         return sb.toString();
+    }
+
+    @Override
+    public Column clone() {
+        try {
+            Column clone = (Column) super.clone();
+            clone.elements = new LinkedList<>();
+            for (BaseElement b: elements) {
+                clone.elements.add(b.clone());
+            }
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

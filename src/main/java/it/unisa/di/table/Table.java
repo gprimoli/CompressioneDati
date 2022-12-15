@@ -4,7 +4,6 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import it.unisa.di.exception.ReadRowException;
 
-import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,17 +55,8 @@ public class Table {
         }
     }
 
-    public void compress() {//File out
-        int len = columns.length;
-        for (int i = 0; i < len; i++) {
-            columns[i].sort();
-//            Column.subIntraColumn(columns[i]);
-//            if (i == 0){
-//                Column.subInterColumn(columns[i]);
-//            }else{
-//                Column.subInterColumn(columns[i], columns[i-1]);
-//            }
-        }
+    public void compress() {
+        Column.SortAndFirstDifference(columns);
     }
 
 

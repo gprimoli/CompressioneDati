@@ -1,12 +1,11 @@
 package it.unisa.di.comparator;
 
 import it.unisa.di.table.BaseElement;
-import it.unisa.di.wrapper.IntPositionedElement;
-import it.unisa.di.wrapper.StringPositionedElement;
+import it.unisa.di.wrapper.positinoed.StringPositionedElement;
 
 import java.util.Comparator;
 
-public class StringContentComparator implements Comparator<BaseElement> {
+public class StringContentComparator implements Comparator<BaseElement<?>> {
     @Override
     public int compare(BaseElement o1, BaseElement o2) {
         StringPositionedElement a = (StringPositionedElement) o1;

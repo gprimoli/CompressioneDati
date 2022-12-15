@@ -1,5 +1,6 @@
 package it.unisa.di.table;
- abstract public class BaseElement<T> {
+
+public abstract class BaseElement<T> implements Cloneable {
     protected T content;
 
     public BaseElement(T content) {
@@ -10,10 +11,20 @@ package it.unisa.di.table;
         return content;
     }
 
-    abstract public void subContent(BaseElement<T> b);
+    abstract public void subContent(BaseElement<?> b);
+
 
     @Override
     public String toString() {
         return content.toString() + "\n";
+    }
+
+    @Override
+    public BaseElement<T> clone() {
+        try {
+            return (BaseElement<T>) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

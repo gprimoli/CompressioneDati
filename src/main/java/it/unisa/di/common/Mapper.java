@@ -16,13 +16,3 @@ public class Mapper {
         return map.get(i);
     }
 }
-//    private static final HashMap<String, Integer> map = new HashMap<>();
-//
-//    void add(String s) {
-//        if (!map.containsKey(s))
-//            map.put(s, map.size());//Aritmetic code come chiave
-//    }
-//
-//    String get(int i) {
-//        return map.get(i);
-//    }

@@ -1,10 +1,10 @@
 package it.unisa.di.comparator;
 import java.util.Comparator;
 
-import it.unisa.di.wrapper.IntPositionedElement;
+import it.unisa.di.wrapper.positinoed.IntPositionedElement;
 import it.unisa.di.table.BaseElement;
 
-public class IntContentComparator implements Comparator<BaseElement> {
+public class IntContentComparator implements Comparator<BaseElement<?>> {
     @Override
     public int compare(BaseElement o1, BaseElement o2) {
         IntPositionedElement a = (IntPositionedElement) o1;
