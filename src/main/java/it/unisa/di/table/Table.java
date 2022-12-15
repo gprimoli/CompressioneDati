@@ -4,14 +4,15 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import it.unisa.di.exception.ReadRowException;
 
+import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Table {
-    private Column[] columns;
-    private List<String> header;
+    private final Column[] columns;
+    private final List<String> header;
 
 
     public Table(FileReader f) {
@@ -54,6 +55,20 @@ public class Table {
             }
         }
     }
+
+    public void compress() {//File out
+        int len = columns.length;
+        for (int i = 0; i < len; i++) {
+            columns[i].sort();
+//            Column.subIntraColumn(columns[i]);
+//            if (i == 0){
+//                Column.subInterColumn(columns[i]);
+//            }else{
+//                Column.subInterColumn(columns[i], columns[i-1]);
+//            }
+        }
+    }
+
 
     @Override
     public String toString() {

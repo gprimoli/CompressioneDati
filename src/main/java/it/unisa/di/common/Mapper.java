@@ -6,13 +6,13 @@ import java.util.List;
 public class Mapper {
     private static final List<String> map = new ArrayList<>();
 
-    int add(String s) {
+    public int add(String s) {
         if (!map.contains(s))
             map.add(s);
         return map.indexOf(s);
     }
 
-    String get(int i) {
+    public String get(int i) {
         return map.get(i);
     }
 }

@@ -27,6 +27,7 @@ public class Main {
             }
 
             Table t = new Table(f);
+            t.compress();
             System.out.println(t);
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Path del file insesistente!",
