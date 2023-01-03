@@ -4,7 +4,7 @@ import it.unisa.di.wrapper.positinoed.PositionedElement;
 
 import java.util.Comparator;
 
-public class PositionalCoparator implements Comparator<PositionedElement<?>> {
+public class PositionalComparator implements Comparator<PositionedElement<?>> {
 
     @Override
     public int compare(PositionedElement o1, PositionedElement o2) {

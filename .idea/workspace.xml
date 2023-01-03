@@ -4,23 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34138342-7987-4fa7-b573-fada03f2a6fe" name="Changes" comment="fase 2 + refactoring consigliato da Teresa">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/base/FloatElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/base/IntElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/base/StringElement.java" afterDir="false" />
+    <list default="true" id="34138342-7987-4fa7-b573-fada03f2a6fe" name="Changes" comment="fase 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/common/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/common/Mapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/FloatContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/FloatContentComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/IntContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/IntContentComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/PositionalCoparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/PositionalCoparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/StringContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/StringContentComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Main.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/Main.run.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/PositionalCoparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/PositionalComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/BaseElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/BaseElement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Column.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/FloatPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/FloatPositionedElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/IntPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/IntPositionedElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/PositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/PositionedElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/StringPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/StringPositionedElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/DatabaseCSV.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,20 +34,32 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2I6VdyJZBFGmIAPcWIPrYG8sLUE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="it.unisa.di.wrapper.base" />
@@ -87,7 +90,9 @@
       <workItem from="1670852354872" duration="8344000" />
       <workItem from="1670919100954" duration="2022000" />
       <workItem from="1671024266882" duration="10699000" />
-      <workItem from="1671103478859" duration="15477000" />
+      <workItem from="1671103478859" duration="15573000" />
+      <workItem from="1672670305561" duration="2854000" />
+      <workItem from="1672757584276" duration="10733000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1669504719963</created>
@@ -124,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671113592500</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fase 3">
+      <created>1671128548155</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671128548155</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,7 +156,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <MESSAGE value="fase 2 + refactoring consigliato da Teresa" />
-    <option name="LAST_COMMIT_MESSAGE" value="fase 2 + refactoring consigliato da Teresa" />
+    <MESSAGE value="fase 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="fase 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -154,9 +167,6 @@
           <option name="timeStamp" value="3" />
         </breakpoint>
       </breakpoints>
-      <default-breakpoints>
-        <breakpoint type="dart-exception" />
-      </default-breakpoints>
     </breakpoint-manager>
   </component>
 </project>

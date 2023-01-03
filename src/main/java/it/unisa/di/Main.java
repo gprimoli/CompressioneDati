@@ -1,6 +1,6 @@
 package it.unisa.di;
 
-import it.unisa.di.table.Table;
+import it.unisa.di.table.DatabaseCSV;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -26,9 +26,9 @@ public class Main {
                 f = new FileReader(args[0]);
             }
 
-            Table t = new Table(f);
-            t.compress();
-            System.out.println(t);
+            DatabaseCSV db = new DatabaseCSV(f);
+            db.compress("src/main/resources/example.csv.RER", 1);
+
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Path del file insesistente!",
                     "Errore 404", JOptionPane.ERROR_MESSAGE);

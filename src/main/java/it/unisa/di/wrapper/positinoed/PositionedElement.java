@@ -2,7 +2,7 @@ package it.unisa.di.wrapper.positinoed;
 
 import it.unisa.di.table.BaseElement;
 
-abstract public class PositionedElement<T> extends BaseElement<T> implements Cloneable{
+abstract public class PositionedElement<T> extends BaseElement<T> {
     private int pos;
 
     public PositionedElement(T content, int pos) {

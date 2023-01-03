@@ -1,6 +1,5 @@
 package it.unisa.di.table;
 
-import it.unisa.di.common.Helper;
 import it.unisa.di.common.Type;
 import it.unisa.di.comparator.FloatContentComparator;
 import it.unisa.di.comparator.IntContentComparator;
@@ -10,15 +9,18 @@ import it.unisa.di.wrapper.positinoed.IntPositionedElement;
 import it.unisa.di.wrapper.positinoed.PositionedElement;
 import it.unisa.di.wrapper.positinoed.StringPositionedElement;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
-class Column implements Cloneable {//L'assenza dello scoope non è un errore: Non voglio far usare questa classe al di fuori del package.
+class Column implements Serializable {//L'assenza dello scoope non è un errore: Non voglio far usare questa classe al di fuori del package.
+    @Serial
+    private static final long serialVersionUID = 1L;
     private final String name;
     private final Type type;
-    private List<BaseElement<?>> elements;
+    private final List<BaseElement<?>> elements;
 
     private Column(String name, Type type) {
         this.name = name;
@@ -26,8 +28,8 @@ class Column implements Cloneable {//L'assenza dello scoope non è un errore: No
         this.elements = new LinkedList<>();
     }
 
-    public static Column init(String entry, String name) {
-        return new Column(name, Helper.whatIs(entry));
+    public static Column init(String name, Type type) {
+        return new Column(name, type);
     }
 
     public void addElement(String entry, int pos) {
@@ -49,27 +51,37 @@ class Column implements Cloneable {//L'assenza dello scoope non è un errore: No
     }
 
     public static void SortAndFirstDifference(Column[] columns) {
-        int len = columns.length;
-        Column tmpA, tmpB = null, col; //A = actual; B = Back
-        for (int i = 0; i < len; i++) {
-            col = columns[i];
-            col.sort();
+        List<Integer> currentColumnPositions = new ArrayList<>();
+        List<Integer> lastColumnPositions = null;
 
-            tmpA = col.clone();
+        for (int i = 0; i < columns.length; i++) {
+            columns[i].sort();
 
-            for (int y = 0; y < col.elements.size(); y++) {
+            List<BaseElement<?>> currentColumnElements = columns[i].elements;//Placeholder
+            PositionedElement<?> currentElement, lastElement = null;
+
+            for (int y = 0; y < currentColumnElements.size(); y++) {
+                currentElement = ((PositionedElement<?>) currentColumnElements.get(y));
+                currentColumnPositions.add(currentElement.getPos());
+
                 if (y > 0) {
-                    col.elements.get(y).subContent(tmpA.elements.get(y - 1));
+                    var tmp = currentElement.clone();
+                    currentElement.subContent(lastElement);
+                    lastElement = tmp;
+                } else {
+                    lastElement = currentElement.clone();
                 }
 
                 if (i == 0) {
-                    ((PositionedElement<?>) col.elements.get(y)).subPos(y);
+                    currentElement.subPos(y + 1);//Gli autori contano gli indici da 1
                 } else {
-                    ((PositionedElement<?>) col.elements.get(y)).subPos((PositionedElement<?>) tmpB.elements.get(y));
+                    if (y < lastColumnPositions.size())
+                        currentElement.subPos(lastColumnPositions.get(y));
                 }
             }
 
-            tmpB = tmpA;
+            lastColumnPositions = currentColumnPositions;
+            currentColumnPositions = new ArrayList<>();
         }
     }
 
@@ -78,19 +90,5 @@ class Column implements Cloneable {//L'assenza dello scoope non è un errore: No
         StringBuilder sb = new StringBuilder("Column Name: ").append(name).append("\nContent:\n");
         elements.forEach(sb::append);
         return sb.toString();
-    }
-
-    @Override
-    public Column clone() {
-        try {
-            Column clone = (Column) super.clone();
-            clone.elements = new LinkedList<>();
-            for (BaseElement b: elements) {
-                clone.elements.add(b.clone());
-            }
-            return clone;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
     }
 }

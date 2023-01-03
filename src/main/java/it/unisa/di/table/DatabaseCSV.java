@@ -2,19 +2,25 @@ package it.unisa.di.table;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import it.unisa.di.common.Helper;
 import it.unisa.di.exception.ReadRowException;
 
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.zip.GZIPOutputStream;
 
-public class Table {
+public class DatabaseCSV implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private final Column[] columns;
     private final List<String> header;
+    private boolean compressed;
 
-
-    public Table(FileReader f) {
+    public DatabaseCSV(FileReader f) {
+        compressed = false;
         header = new ArrayList<>();
         try {
             CSVReader r = new CSVReader(f);
@@ -23,9 +29,8 @@ public class Table {
             _initHeader(row);
             columns = new Column[header.size()];
 
-            int pos = 0;
-            while ((row = r.readNext()) != null) {
-                _buildColumns(row, ++pos);
+            for (int i = 1; (row = r.readNext()) != null; i++) {//i = 1 perchè 0 è l'Header
+                _buildColumns(row, i);
             }
 
         } catch (CsvValidationException e) {
@@ -48,17 +53,36 @@ public class Table {
         for (int i = 0; i < row.length; i++) {
             if (row[i].compareTo("") != 0) {
                 if (columns[i] == null) {
-                    columns[i] = Column.init(row[i], header.get(i));
+                    columns[i] = Column.init(header.get(i), Helper.whatIs(row[i]));
                 }
                 columns[i].addElement(row[i], pos);
             }
         }
     }
 
-    public void compress() {
-        Column.SortAndFirstDifference(columns);
+    public void compress(String output, int alg) {
+        if (!compressed) {
+            Column.SortAndFirstDifference(columns);
+            compressed = true;
+        }
+        switch (alg){
+            case 1 -> {
+                try {
+                    ObjectOutputStream stream = new ObjectOutputStream(new GZIPOutputStream(new FileOutputStream(output)));
+                    stream.writeObject(this);
+                    stream.flush();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            case 2 -> {
+                System.out.println("KO");
+            }
+            default -> {
+                System.out.println("OK");
+            }
+        }
     }
-
 
     @Override
     public String toString() {

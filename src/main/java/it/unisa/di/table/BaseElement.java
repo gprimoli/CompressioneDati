@@ -1,6 +1,11 @@
 package it.unisa.di.table;
 
-public abstract class BaseElement<T> implements Cloneable {
+import java.io.Serial;
+import java.io.Serializable;
+
+public abstract class BaseElement<T> implements Cloneable, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     protected T content;
 
     public BaseElement(T content) {

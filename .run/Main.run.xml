@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="it.unisa.di.Main" />
-    <module name="Compressione Dati" />
+    <module name="CompressioneDati" />
     <option name="PROGRAM_PARAMETERS" value="&quot;src/main/resources/example.csv&quot;" />
     <extension name="coverage">
       <pattern>
