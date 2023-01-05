@@ -1,25 +1,32 @@
 package it.unisa.di.table;
 
+import com.github.luben.zstd.ZstdOutputStream;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import it.unisa.di.GUI;
 import it.unisa.di.common.Helper;
 import it.unisa.di.exception.ReadRowException;
+import net.jpountz.lz4.LZ4BlockOutputStream;
+import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
+import org.apache.commons.compress.compressors.deflate.DeflateCompressorOutputStream;
+import org.apache.commons.compress.compressors.lzma.LZMACompressorOutputStream;
+import org.xerial.snappy.SnappyOutputStream;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 public class DatabaseCSV implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
-
     private final Column[] columns;
     private final List<String> header;
     private boolean compressed;
 
-    public DatabaseCSV(FileReader f) {
+    public DatabaseCSV(FileReader f, GUI log) {
         compressed = false;
         header = new ArrayList<>();
         try {
@@ -27,12 +34,14 @@ public class DatabaseCSV implements Serializable {
             String[] row = r.readNext();
 
             _initHeader(row);
+
             columns = new Column[header.size()];
-
-            for (int i = 1; (row = r.readNext()) != null; i++) {//i = 1 perchè 0 è l'Header
-                _buildColumns(row, i);
+            int i = 1;
+            while ((row = r.readNext()) != null) {
+                if(i % 2500 == 0)
+                    log.addToLog("Lette " + i + " righe");
+                _buildColumns(row, i++);
             }
-
         } catch (CsvValidationException e) {
             System.err.println("Formattazione CSV non valida. (Usa la \",\" per separare ogni entry e \";\" per dividere le row)");
             throw new RuntimeException(e);
@@ -60,28 +69,38 @@ public class DatabaseCSV implements Serializable {
         }
     }
 
-    public void compress(String output, int alg) {
+    public void compress(FileOutputStream output, int alg, GUI log) {
+        log.addToLog("Inizio Compressione");
         if (!compressed) {
-            Column.SortAndFirstDifference(columns);
+            Column.SortAndFirstDifference(columns, log);
             compressed = true;
         }
-        switch (alg){
-            case 1 -> {
-                try {
-                    ObjectOutputStream stream = new ObjectOutputStream(new GZIPOutputStream(new FileOutputStream(output)));
-                    stream.writeObject(this);
-                    stream.flush();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+        log.addToLog("Fine Compressione");
+        try {
+            OutputStream os = null;
+            switch (alg) {
+                case 1 -> os = new GZIPOutputStream(output);
+                case 2 -> os = new ZstdOutputStream(output);
+                case 3 -> os = new LZ4BlockOutputStream(output);
+                case 4 -> os = new SnappyOutputStream(output);
+                case 5 -> os = new BZip2CompressorOutputStream(output);
+                case 6 -> os = new DeflateCompressorOutputStream(output);
+                case 7 -> os = new LZMACompressorOutputStream(output);
+                default -> System.out.println("OK");
             }
-            case 2 -> {
-                System.out.println("KO");
-            }
-            default -> {
-                System.out.println("OK");
-            }
+            ObjectOutputStream stream = new ObjectOutputStream(os);
+            stream.writeObject(this);
+            stream.flush();
+            stream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+
+
+    public void decompress(String input, int alg, GUI log) {
+//        ObjectInputStream inputStream = new ObjectInputStream(new GZIPInputStream(new FileInputStream(output)));
+//        DatabaseCSV check = (DatabaseCSV) inputStream.readObject();
     }
 
     @Override

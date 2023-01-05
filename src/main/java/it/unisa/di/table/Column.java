@@ -1,5 +1,6 @@
 package it.unisa.di.table;
 
+import it.unisa.di.GUI;
 import it.unisa.di.common.Type;
 import it.unisa.di.comparator.FloatContentComparator;
 import it.unisa.di.comparator.IntContentComparator;
@@ -42,6 +43,10 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
         );
     }
 
+    public int size(){
+        return elements.size();
+    }
+
     public void sort() {
         switch (type) {
             case Integer -> elements.sort(new IntContentComparator());
@@ -50,16 +55,19 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
         }
     }
 
-    public static void SortAndFirstDifference(Column[] columns) {
+    public static void SortAndFirstDifference(Column[] columns, GUI log) {
         List<Integer> currentColumnPositions = new ArrayList<>();
         List<Integer> lastColumnPositions = null;
 
         for (int i = 0; i < columns.length; i++) {
+            log.addToLog("Sort della colonna: " + i);
             columns[i].sort();
+            log.addToLog("Fine Sort della colonna: " + i);
 
             List<BaseElement<?>> currentColumnElements = columns[i].elements;//Placeholder
             PositionedElement<?> currentElement, lastElement = null;
 
+            log.addToLog("PreProcessing della colonna: " + i);
             for (int y = 0; y < currentColumnElements.size(); y++) {
                 currentElement = ((PositionedElement<?>) currentColumnElements.get(y));
                 currentColumnPositions.add(currentElement.getPos());
@@ -79,10 +87,19 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
                         currentElement.subPos(lastColumnPositions.get(y));
                 }
             }
+            log.addToLog("Fine PreProcessing della colonna: " + i);
 
             lastColumnPositions = currentColumnPositions;
             currentColumnPositions = new ArrayList<>();
         }
+    }
+
+    public int[] getAllPosition() {//Exstend
+        int[] intArray = new int[elements.size()];
+        for (int i = 0; i < elements.size(); i++){
+            intArray[i] = ((PositionedElement<?>) elements.get(i)).getPos();
+        }
+        return intArray;
     }
 
     @Override
