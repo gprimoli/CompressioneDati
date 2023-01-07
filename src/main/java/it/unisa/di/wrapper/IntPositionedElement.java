@@ -1,6 +1,4 @@
-package it.unisa.di.wrapper.positinoed;
-
-import it.unisa.di.table.BaseElement;
+package it.unisa.di.wrapper;
 
 public class IntPositionedElement extends PositionedElement<Integer> {
     public IntPositionedElement(String content, int pos) {

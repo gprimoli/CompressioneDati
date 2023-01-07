@@ -1,8 +1,8 @@
 package it.unisa.di.comparator;
 import java.util.Comparator;
 
-import it.unisa.di.wrapper.positinoed.IntPositionedElement;
-import it.unisa.di.table.BaseElement;
+import it.unisa.di.wrapper.IntPositionedElement;
+import it.unisa.di.wrapper.BaseElement;
 
 public class IntContentComparator implements Comparator<BaseElement<?>> {
     @Override

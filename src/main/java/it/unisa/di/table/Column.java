@@ -5,10 +5,10 @@ import it.unisa.di.common.Type;
 import it.unisa.di.comparator.FloatContentComparator;
 import it.unisa.di.comparator.IntContentComparator;
 import it.unisa.di.comparator.StringContentComparator;
-import it.unisa.di.wrapper.positinoed.FloatPositionedElement;
-import it.unisa.di.wrapper.positinoed.IntPositionedElement;
-import it.unisa.di.wrapper.positinoed.PositionedElement;
-import it.unisa.di.wrapper.positinoed.StringPositionedElement;
+import it.unisa.di.wrapper.FloatPositionedElement;
+import it.unisa.di.wrapper.IntPositionedElement;
+import it.unisa.di.wrapper.PositionedElement;
+import it.unisa.di.wrapper.StringPositionedElement;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -21,7 +21,7 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
     private static final long serialVersionUID = 1L;
     private final String name;
     private final Type type;
-    private final List<BaseElement<?>> elements;
+    private final List<PositionedElement<?>> elements;
 
     private Column(String name, Type type) {
         this.name = name;
@@ -62,14 +62,13 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
         for (int i = 0; i < columns.length; i++) {
             log.addToLog("Sort della colonna: " + i);
             columns[i].sort();
-            log.addToLog("Fine Sort della colonna: " + i);
 
-            List<BaseElement<?>> currentColumnElements = columns[i].elements;//Placeholder
+            List<PositionedElement<?>> currentColumnElements = columns[i].elements;//Placeholder
             PositionedElement<?> currentElement, lastElement = null;
 
             log.addToLog("PreProcessing della colonna: " + i);
             for (int y = 0; y < currentColumnElements.size(); y++) {
-                currentElement = ((PositionedElement<?>) currentColumnElements.get(y));
+                currentElement = currentColumnElements.get(y);
                 currentColumnPositions.add(currentElement.getPos());
 
                 if (y > 0) {
@@ -87,21 +86,11 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
                         currentElement.subPos(lastColumnPositions.get(y));
                 }
             }
-            log.addToLog("Fine PreProcessing della colonna: " + i);
 
             lastColumnPositions = currentColumnPositions;
             currentColumnPositions = new ArrayList<>();
         }
     }
-
-    public int[] getAllPosition() {//Exstend
-        int[] intArray = new int[elements.size()];
-        for (int i = 0; i < elements.size(); i++){
-            intArray[i] = ((PositionedElement<?>) elements.get(i)).getPos();
-        }
-        return intArray;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Column Name: ").append(name).append("\nContent:\n");

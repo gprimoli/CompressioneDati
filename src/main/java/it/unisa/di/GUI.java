@@ -8,6 +8,7 @@ import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 public class GUI {
@@ -41,12 +42,17 @@ public class GUI {
         mainPanel.add(selectPanel);
 
         JPanel commandsPanel = new JPanel(new FlowLayout());
+
         JButton buttonCompress = new JButton("Comprimi");
         buttonCompress.setPreferredSize(new Dimension(150, 30));
-//        JButton bottone2 = new JButton("Decomprimi");
+
+        JButton buttonDecompress = new JButton("Decomprimi");
+        buttonDecompress.setPreferredSize(new Dimension(150, 30));
+
         commandsPanel.add(buttonCompress);
-//        commandsPanel.add(Box.createHorizontalStrut(10));
-//        commandsPanel.add(bottone2);
+        commandsPanel.add(Box.createHorizontalStrut(10));
+        commandsPanel.add(buttonDecompress);
+
         mainPanel.add(commandsPanel);
 
 
@@ -63,18 +69,20 @@ public class GUI {
         frame.add(mainPanel);
 
         buttonCompress.addActionListener(event -> {
+            addToLog("Scegliendo un file");
+
             SelectItem selectedItem = ((SelectItem) Objects.requireNonNull(select.getSelectedItem()));
             String in, out;
             JFileChooser chooser = new JFileChooser("src/main/resources");
             chooser.setFileFilter(new FileNameExtensionFilter("CSV Database", "csv"));
-            do {
-                addToLog("Scegliendo un file");
-            } while (chooser.showDialog(null, "Comprimi") != JFileChooser.APPROVE_OPTION);
-            addToLog("====================INIZIO====================");
+
+            if(chooser.showDialog(null, "Comprimi") != JFileChooser.APPROVE_OPTION){
+                return;
+            }
 
             in = chooser.getSelectedFile().getAbsolutePath();
 
-            out = in + ".ALG_" + selectedItem.label.toUpperCase() + ".RER";
+            out = in + "_ALG_" + selectedItem.label.toUpperCase() + ".RER";
             try {
                 DatabaseCSV db = new DatabaseCSV(new FileReader(in),this);
                 db.compress(new FileOutputStream(out), selectedItem.value, this);
@@ -82,15 +90,14 @@ public class GUI {
                 JOptionPane.showMessageDialog(null, "Path del file insesistente!",
                         "Errore 404", JOptionPane.ERROR_MESSAGE);
             }
-            addToLog("====================FINE====================");
         });
-//        bottone2.addActionListener(event -> {
-//            System.out.println("KO");
-//        });
+        buttonDecompress.addActionListener(event -> {
+            System.out.println("KO");
+        });
     }
 
     public void addToLog(String s) {
-        log.append(s + "\n");
+        log.append("[" + new Timestamp(System.currentTimeMillis()) + "] " + s + "\n");
         log.repaint();
         log.revalidate();
     }

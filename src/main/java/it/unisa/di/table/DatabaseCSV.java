@@ -38,7 +38,7 @@ public class DatabaseCSV implements Serializable {
             columns = new Column[header.size()];
             int i = 1;
             while ((row = r.readNext()) != null) {
-                if(i % 2500 == 0)
+                if (i % 2500 == 0)
                     log.addToLog("Lette " + i + " righe");
                 _buildColumns(row, i++);
             }
@@ -70,12 +70,11 @@ public class DatabaseCSV implements Serializable {
     }
 
     public void compress(FileOutputStream output, int alg, GUI log) {
-        log.addToLog("Inizio Compressione");
+        log.addToLog("\n====================INIZIO COMPRESSIONE====================");
         if (!compressed) {
             Column.SortAndFirstDifference(columns, log);
             compressed = true;
         }
-        log.addToLog("Fine Compressione");
         try {
             OutputStream os = null;
             switch (alg) {
@@ -95,6 +94,7 @@ public class DatabaseCSV implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        log.addToLog("\n====================FINE COMPRESSIONE====================");
     }
 
 
