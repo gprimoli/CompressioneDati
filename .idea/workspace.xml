@@ -4,28 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34138342-7987-4fa7-b573-fada03f2a6fe" name="Changes" comment="fase 3">
+    <list default="true" id="34138342-7987-4fa7-b573-fada03f2a6fe" name="Changes" comment="ready for test">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/example_smal.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/CLI.run.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/GUI.run.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/FloatContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/FloatContentComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/IntContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/IntContentComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/PositionalComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/PositionalComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/StringContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/StringContentComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/BaseElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/BaseElement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Column.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/DatabaseCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/DatabaseCSV.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/base/FloatElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/base/IntElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/base/StringElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/FloatPositionedElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/IntPositionedElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/PositionedElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/positinoed/StringPositionedElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/example.csv.ALG_GZIP.RER" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/example.csv.ALG_GZIP.RER" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/BaseElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/BaseElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/FloatPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/FloatPositionedElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/IntPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/IntPositionedElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/PositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/PositionedElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/StringPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/StringPositionedElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/example.csv.ALG_GZIP.RER" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,20 +51,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "C:/Users/play_/IdeaProjects/CompressioneDati/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\play_\IdeaProjects\CompressioneDati\src\main\resources" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="it.unisa.di.wrapper.base" />
       <recent name="it.unisa.di.comparator" />
@@ -108,7 +105,7 @@
       <workItem from="1672670305561" duration="2854000" />
       <workItem from="1672757584276" duration="10733000" />
       <workItem from="1673083453168" duration="4242000" />
-      <workItem from="1673090523197" duration="991000" />
+      <workItem from="1673090523197" duration="7213000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1669504719963</created>
@@ -152,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671128548155</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ready for test">
+      <created>1673091793228</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1673091793228</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +177,8 @@
     <MESSAGE value="init" />
     <MESSAGE value="fase 2 + refactoring consigliato da Teresa" />
     <MESSAGE value="fase 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="fase 3" />
+    <MESSAGE value="ready for test" />
+    <option name="LAST_COMMIT_MESSAGE" value="ready for test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -184,5 +189,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="currentElement" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

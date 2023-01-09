@@ -1,15 +1,23 @@
 package it.unisa.di.table;
 
+import com.github.luben.zstd.ZstdInputStream;
 import com.github.luben.zstd.ZstdOutputStream;
 import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
 import it.unisa.di.GUI;
 import it.unisa.di.common.Helper;
 import it.unisa.di.exception.ReadRowException;
+import it.unisa.di.wrapper.PositionedElement;
+import net.jpountz.lz4.LZ4BlockInputStream;
 import net.jpountz.lz4.LZ4BlockOutputStream;
+import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
+import org.apache.commons.compress.compressors.deflate.DeflateCompressorInputStream;
 import org.apache.commons.compress.compressors.deflate.DeflateCompressorOutputStream;
+import org.apache.commons.compress.compressors.lzma.LZMACompressorInputStream;
 import org.apache.commons.compress.compressors.lzma.LZMACompressorOutputStream;
+import org.xerial.snappy.SnappyInputStream;
 import org.xerial.snappy.SnappyOutputStream;
 
 import java.io.*;
@@ -62,7 +70,7 @@ public class DatabaseCSV implements Serializable {
         for (int i = 0; i < row.length; i++) {
             if (row[i].compareTo("") != 0) {
                 if (columns[i] == null) {
-                    columns[i] = Column.init(header.get(i), Helper.whatIs(row[i]));
+                    columns[i] = new Column(header.get(i), Helper.whatIs(row[i]));
                 }
                 columns[i].addElement(row[i], pos);
             }
@@ -84,7 +92,6 @@ public class DatabaseCSV implements Serializable {
                 case 4 -> os = new SnappyOutputStream(output);
                 case 5 -> os = new BZip2CompressorOutputStream(output);
                 case 6 -> os = new DeflateCompressorOutputStream(output);
-                case 7 -> os = new LZMACompressorOutputStream(output);
                 default -> System.out.println("OK");
             }
             ObjectOutputStream stream = new ObjectOutputStream(os);
@@ -98,9 +105,57 @@ public class DatabaseCSV implements Serializable {
     }
 
 
-    public void decompress(String input, int alg, GUI log) {
-//        ObjectInputStream inputStream = new ObjectInputStream(new GZIPInputStream(new FileInputStream(output)));
-//        DatabaseCSV check = (DatabaseCSV) inputStream.readObject();
+    public static DatabaseCSV decompress(FileInputStream input, int alg, GUI log) {
+        DatabaseCSV db = null;
+        log.addToLog("\n====================INIZIO DECOMPRESSIONE====================");
+        try {
+            InputStream os = null;
+            switch (alg) {
+                case 1 -> os = new GZIPInputStream(input);
+                case 2 -> os = new ZstdInputStream(input);
+                case 3 -> os = new LZ4BlockInputStream(input);
+                case 4 -> os = new SnappyInputStream(input);
+                case 5 -> os = new BZip2CompressorInputStream(input);
+                case 6 -> os = new DeflateCompressorInputStream(input);
+                default -> System.out.println("OK");
+            }
+            ObjectInputStream stream = new ObjectInputStream(os);
+            db = (DatabaseCSV) stream.readObject();
+            Column.FirstAddAndSortBack(db.columns, log);
+            stream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        log.addToLog("\n====================FINE DECOMPRESSIONE====================");
+        return db;
+    }
+
+    public void save(FileWriter fileWriter) {
+        try {
+            CSVWriter w = new CSVWriter(fileWriter);
+            w.writeNext(header.toArray(String[]::new));
+
+            boolean[] colStatus = new boolean[columns.length];
+            int exit = 0;
+            for (int i = 0; exit < colStatus.length; i++) {
+                String[] row = new String[columns.length];
+                for (int y = 0; y < columns.length; y++) {
+                    if (!colStatus[y]) {
+                        PositionedElement<?> p = columns[y].getElement(i);
+                        if (p == null) {
+                            colStatus[y] = true;
+                            exit++;
+                        }
+                        row[y] = p != null ? p.toString() : "";
+                    }
+                }
+                if (exit < colStatus.length)
+                    w.writeNext(row);
+            }
+            w.flush();
+            w.close();
+        } catch (Exception ignored) {
+        }
     }
 
     @Override

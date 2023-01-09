@@ -5,9 +5,7 @@ import it.unisa.di.table.DatabaseCSV;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
+import java.io.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -35,7 +33,6 @@ public class GUI {
                 new SelectItem("Snappy", 4),
                 new SelectItem("BZip2", 5),
                 new SelectItem("Deflate", 6),
-                new SelectItem("LZMA", 7),
         });
         selectPanel.add(Box.createHorizontalStrut(5));
         selectPanel.add(select);
@@ -92,7 +89,30 @@ public class GUI {
             }
         });
         buttonDecompress.addActionListener(event -> {
-            System.out.println("KO");
+            addToLog("Scegliendo un file");
+
+            SelectItem selectedItem = ((SelectItem) Objects.requireNonNull(select.getSelectedItem()));
+            String in, out;
+            JFileChooser chooser = new JFileChooser("src/main/resources");
+            chooser.setFileFilter(new FileNameExtensionFilter("CSV Database", "RER"));
+
+            if(chooser.showDialog(null, "Comprimi") != JFileChooser.APPROVE_OPTION){
+                return;
+            }
+
+            in = chooser.getSelectedFile().getAbsolutePath();
+
+            out = in.split("_ALG_")[0] + "_decompress.csv";
+            try {
+                DatabaseCSV db = DatabaseCSV.decompress(new FileInputStream(in), selectedItem.value,this);
+                db.save(new FileWriter(out));
+                addToLog("Fine salvataggio file decompresso");
+            } catch (FileNotFoundException e) {
+                JOptionPane.showMessageDialog(null, "Path del file insesistente!",
+                        "Errore 404", JOptionPane.ERROR_MESSAGE);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
 

@@ -4,6 +4,7 @@ import it.unisa.di.common.Mapper;
 
 public class StringPositionedElement extends PositionedElement<Integer> {
     private final static Mapper map = new Mapper();
+
     public StringPositionedElement(String content, int pos) {
         super(map.add(content), pos);
     }
@@ -14,7 +15,12 @@ public class StringPositionedElement extends PositionedElement<Integer> {
     }
 
     @Override
-    public String toString()  {
-        return "[" + getPos() + "] " + content + "\n";
+    public void plusContent(BaseElement<?> b) {
+        content += (int) b.getContent();
+    }
+
+    @Override
+    public String toString() {
+        return map.get(content);//"[" + getPos() + "] " + map.get(content) + "\n"
     }
 }

@@ -17,7 +17,7 @@ public abstract class BaseElement<T> implements Cloneable, Serializable {
     }
 
     abstract public void subContent(BaseElement<?> b);
-
+    abstract public void plusContent(BaseElement<?> b);
 
     @Override
     public String toString() {

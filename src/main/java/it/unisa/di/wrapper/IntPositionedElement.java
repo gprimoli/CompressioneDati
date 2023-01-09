@@ -9,4 +9,9 @@ public class IntPositionedElement extends PositionedElement<Integer> {
     public void subContent(BaseElement<?> b) {
         content -= (int) b.getContent();
     }
+
+    @Override
+    public void plusContent(BaseElement<?> b)  {
+        content += (int) b.getContent();
+    }
 }

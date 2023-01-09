@@ -15,14 +15,20 @@ abstract public class PositionedElement<T> extends BaseElement<T> {
     public void subPos(PositionedElement<?> b) {
         this.pos -= b.pos;
     }
+    public void addPos(PositionedElement<?> b) {
+        this.pos += b.pos;
+    }
 
     public void subPos(int pos) {
         this.pos -= pos;
     }
+    public void addPos(int pos) {
+        this.pos += pos;
+    }
 
     @Override
     public String toString() {
-        return "[" + pos + "] " + super.toString();
+        return content.toString();
     }
 
     @Override

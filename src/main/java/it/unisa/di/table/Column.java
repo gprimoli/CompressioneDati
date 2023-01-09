@@ -4,6 +4,7 @@ import it.unisa.di.GUI;
 import it.unisa.di.common.Type;
 import it.unisa.di.comparator.FloatContentComparator;
 import it.unisa.di.comparator.IntContentComparator;
+import it.unisa.di.comparator.PositionalComparator;
 import it.unisa.di.comparator.StringContentComparator;
 import it.unisa.di.wrapper.FloatPositionedElement;
 import it.unisa.di.wrapper.IntPositionedElement;
@@ -23,14 +24,10 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
     private final Type type;
     private final List<PositionedElement<?>> elements;
 
-    private Column(String name, Type type) {
+    public Column(String name, Type type) {
         this.name = name;
         this.type = type;
         this.elements = new LinkedList<>();
-    }
-
-    public static Column init(String name, Type type) {
-        return new Column(name, type);
     }
 
     public void addElement(String entry, int pos) {
@@ -43,16 +40,24 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
         );
     }
 
-    public int size(){
+    public PositionedElement<?> getElement(int pos) {
+        return pos < elements.size() ? elements.get(pos) : null;
+    }
+
+    public int size() {
         return elements.size();
     }
 
-    public void sort() {
+    public void sortByContent() {
         switch (type) {
             case Integer -> elements.sort(new IntContentComparator());
             case Float -> elements.sort(new FloatContentComparator());
             default -> elements.sort(new StringContentComparator());
         }
+    }
+
+    public void sortByPosition() {
+        elements.sort(new PositionalComparator());
     }
 
     public static void SortAndFirstDifference(Column[] columns, GUI log) {
@@ -61,7 +66,7 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
 
         for (int i = 0; i < columns.length; i++) {
             log.addToLog("Sort della colonna: " + i);
-            columns[i].sort();
+            columns[i].sortByContent();
 
             List<PositionedElement<?>> currentColumnElements = columns[i].elements;//Placeholder
             PositionedElement<?> currentElement, lastElement = null;
@@ -91,6 +96,40 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
             currentColumnPositions = new ArrayList<>();
         }
     }
+
+    public static void FirstAddAndSortBack(Column[] columns, GUI log) {
+        List<Integer> currentColumnPositions = new ArrayList<>();
+        List<Integer> lastColumnPositions = null;
+
+        for (int i = 0; i < columns.length; i++) {
+            List<PositionedElement<?>> currentColumnElements = columns[i].elements;//Placeholder
+            PositionedElement<?> currentElement, lastElement = null;
+
+            for (int y = 0; y < currentColumnElements.size(); y++) {
+                currentElement = currentColumnElements.get(y);
+
+                if (y > 0) {
+                    currentElement.plusContent(lastElement);
+                }
+                lastElement = currentElement.clone();
+
+                if (i == 0) {
+                    currentElement.addPos(y + 1);//Gli autori contano gli indici da 1
+                } else {
+                    if (y < lastColumnPositions.size())
+                        currentElement.addPos(lastColumnPositions.get(y));
+                }
+
+                currentColumnPositions.add(currentElement.getPos());
+            }
+
+            lastColumnPositions = currentColumnPositions;
+            currentColumnPositions = new ArrayList<>();
+
+            columns[i].sortByPosition();
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Column Name: ").append(name).append("\nContent:\n");

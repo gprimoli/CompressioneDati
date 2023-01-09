@@ -8,4 +8,9 @@ public class FloatPositionedElement extends PositionedElement<Float> {
     public void subContent(BaseElement<?> b) {
         content -= (Float) b.getContent();
     }
+
+    @Override
+    public void plusContent(BaseElement<?> b)  {
+        content += (Float) b.getContent();
+    }
 }
