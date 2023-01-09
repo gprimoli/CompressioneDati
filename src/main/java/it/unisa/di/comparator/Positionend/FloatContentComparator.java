@@ -1,8 +1,8 @@
-package it.unisa.di.comparator;
+package it.unisa.di.comparator.Positionend;
 import java.util.Comparator;
 
-import it.unisa.di.wrapper.FloatPositionedElement;
-import it.unisa.di.wrapper.BaseElement;
+import it.unisa.di.table.positionend.element.FloatPositionedElement;
+import it.unisa.di.table.base.element.BaseElement;
 public class FloatContentComparator implements Comparator<BaseElement<?>> {
     @Override
     public int compare(BaseElement o1, BaseElement o2) {

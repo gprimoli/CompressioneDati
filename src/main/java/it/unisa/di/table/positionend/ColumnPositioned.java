@@ -1,15 +1,15 @@
-package it.unisa.di.table;
+package it.unisa.di.table.positionend;
 
 import it.unisa.di.GUI;
 import it.unisa.di.common.Type;
-import it.unisa.di.comparator.FloatContentComparator;
-import it.unisa.di.comparator.IntContentComparator;
-import it.unisa.di.comparator.PositionalComparator;
-import it.unisa.di.comparator.StringContentComparator;
-import it.unisa.di.wrapper.FloatPositionedElement;
-import it.unisa.di.wrapper.IntPositionedElement;
-import it.unisa.di.wrapper.PositionedElement;
-import it.unisa.di.wrapper.StringPositionedElement;
+import it.unisa.di.comparator.Positionend.FloatContentComparator;
+import it.unisa.di.comparator.Positionend.IntContentComparator;
+import it.unisa.di.comparator.Positionend.PositionalComparator;
+import it.unisa.di.comparator.Positionend.StringContentComparator;
+import it.unisa.di.table.positionend.element.FloatPositionedElement;
+import it.unisa.di.table.positionend.element.IntPositionedElement;
+import it.unisa.di.table.positionend.element.PositionedElement;
+import it.unisa.di.table.positionend.element.StringPositionedElement;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -17,14 +17,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-class Column implements Serializable {//L'assenza dello scoope non è un errore: Non voglio far usare questa classe al di fuori del package.
+class ColumnPositioned implements Serializable {//L'assenza dello scoope non è un errore: Non voglio far usare questa classe al di fuori del package.
     @Serial
     private static final long serialVersionUID = 1L;
     private final String name;
     private final Type type;
     private final List<PositionedElement<?>> elements;
 
-    public Column(String name, Type type) {
+    public ColumnPositioned(String name, Type type) {
         this.name = name;
         this.type = type;
         this.elements = new LinkedList<>();
@@ -60,7 +60,7 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
         elements.sort(new PositionalComparator());
     }
 
-    public static void SortAndFirstDifference(Column[] columns, GUI log) {
+    public static void SortAndFirstDifference(ColumnPositioned[] columns, GUI log) {
         List<Integer> currentColumnPositions = new ArrayList<>();
         List<Integer> lastColumnPositions = null;
 
@@ -97,7 +97,7 @@ class Column implements Serializable {//L'assenza dello scoope non è un errore:
         }
     }
 
-    public static void FirstAddAndSortBack(Column[] columns, GUI log) {
+    public static void FirstAddAndSortBack(ColumnPositioned[] columns, GUI log) {
         List<Integer> currentColumnPositions = new ArrayList<>();
         List<Integer> lastColumnPositions = null;
 

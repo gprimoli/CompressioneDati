@@ -1,7 +1,7 @@
-package it.unisa.di.comparator;
+package it.unisa.di.comparator.Positionend;
 
-import it.unisa.di.wrapper.BaseElement;
-import it.unisa.di.wrapper.StringPositionedElement;
+import it.unisa.di.table.base.element.BaseElement;
+import it.unisa.di.table.positionend.element.StringPositionedElement;
 
 import java.util.Comparator;
 

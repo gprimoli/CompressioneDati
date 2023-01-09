@@ -1,6 +1,7 @@
-package it.unisa.di.wrapper;
+package it.unisa.di.table.positionend.element;
 
 import it.unisa.di.common.Mapper;
+import it.unisa.di.table.base.element.BaseElement;
 
 public class StringPositionedElement extends PositionedElement<Integer> {
     private final static Mapper map = new Mapper();

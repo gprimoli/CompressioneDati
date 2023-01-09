@@ -1,4 +1,4 @@
-package it.unisa.di.table;
+package it.unisa.di.table.positionend;
 
 import com.github.luben.zstd.ZstdInputStream;
 import com.github.luben.zstd.ZstdOutputStream;
@@ -8,15 +8,13 @@ import com.opencsv.exceptions.CsvValidationException;
 import it.unisa.di.GUI;
 import it.unisa.di.common.Helper;
 import it.unisa.di.exception.ReadRowException;
-import it.unisa.di.wrapper.PositionedElement;
+import it.unisa.di.table.positionend.element.PositionedElement;
 import net.jpountz.lz4.LZ4BlockInputStream;
 import net.jpountz.lz4.LZ4BlockOutputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
 import org.apache.commons.compress.compressors.deflate.DeflateCompressorInputStream;
 import org.apache.commons.compress.compressors.deflate.DeflateCompressorOutputStream;
-import org.apache.commons.compress.compressors.lzma.LZMACompressorInputStream;
-import org.apache.commons.compress.compressors.lzma.LZMACompressorOutputStream;
 import org.xerial.snappy.SnappyInputStream;
 import org.xerial.snappy.SnappyOutputStream;
 
@@ -27,14 +25,14 @@ import java.util.List;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-public class DatabaseCSV implements Serializable {
+public class DatabaseCSVPositioned implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
-    private final Column[] columns;
+    private final ColumnPositioned[] columns;
     private final List<String> header;
     private boolean compressed;
 
-    public DatabaseCSV(FileReader f, GUI log) {
+    public DatabaseCSVPositioned(FileReader f, GUI log) {
         compressed = false;
         header = new ArrayList<>();
         try {
@@ -43,7 +41,7 @@ public class DatabaseCSV implements Serializable {
 
             _initHeader(row);
 
-            columns = new Column[header.size()];
+            columns = new ColumnPositioned[header.size()];
             int i = 1;
             while ((row = r.readNext()) != null) {
                 if (i % 2500 == 0)
@@ -70,7 +68,7 @@ public class DatabaseCSV implements Serializable {
         for (int i = 0; i < row.length; i++) {
             if (row[i].compareTo("") != 0) {
                 if (columns[i] == null) {
-                    columns[i] = new Column(header.get(i), Helper.whatIs(row[i]));
+                    columns[i] = new ColumnPositioned(header.get(i), Helper.whatIs(row[i]));
                 }
                 columns[i].addElement(row[i], pos);
             }
@@ -80,7 +78,7 @@ public class DatabaseCSV implements Serializable {
     public void compress(FileOutputStream output, int alg, GUI log) {
         log.addToLog("\n====================INIZIO COMPRESSIONE====================");
         if (!compressed) {
-            Column.SortAndFirstDifference(columns, log);
+            ColumnPositioned.SortAndFirstDifference(columns, log);
             compressed = true;
         }
         try {
@@ -104,9 +102,8 @@ public class DatabaseCSV implements Serializable {
         log.addToLog("\n====================FINE COMPRESSIONE====================");
     }
 
-
-    public static DatabaseCSV decompress(FileInputStream input, int alg, GUI log) {
-        DatabaseCSV db = null;
+    public static DatabaseCSVPositioned decompress(FileInputStream input, int alg, GUI log) {
+        DatabaseCSVPositioned db = null;
         log.addToLog("\n====================INIZIO DECOMPRESSIONE====================");
         try {
             InputStream os = null;
@@ -120,8 +117,8 @@ public class DatabaseCSV implements Serializable {
                 default -> System.out.println("OK");
             }
             ObjectInputStream stream = new ObjectInputStream(os);
-            db = (DatabaseCSV) stream.readObject();
-            Column.FirstAddAndSortBack(db.columns, log);
+            db = (DatabaseCSVPositioned) stream.readObject();
+            ColumnPositioned.FirstAddAndSortBack(db.columns, log);
             stream.close();
         } catch (Exception e) {
             e.printStackTrace();

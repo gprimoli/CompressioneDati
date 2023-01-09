@@ -1,3 +1,57 @@
+package it.unisa.di;
+
+import it.unisa.di.table.base.DatabaseCSVBase;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+
+public class MainTest {
+    public static void main(String[] args) throws FileNotFoundException {
+        FileReader fin = new FileReader("src/main/resources/911.csv");
+        FileOutputStream fout = new FileOutputStream("src/main/resources/911_compressed.csv");
+        DatabaseCSVBase d = new DatabaseCSVBase(fin);
+        d.compress(fout, 5);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//TEST PosTable compression by IMG alg
 //package it.unisa.di;
 //
 ////import jwave.Transform;
@@ -46,4 +100,3 @@
 ////        System.out.println();
 //    }
 //}
-//

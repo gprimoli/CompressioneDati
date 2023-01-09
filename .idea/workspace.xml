@@ -4,18 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34138342-7987-4fa7-b573-fada03f2a6fe" name="Changes" comment="ready for test">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/example_smal.csv" afterDir="false" />
+    <list default="true" id="34138342-7987-4fa7-b573-fada03f2a6fe" name="Changes" comment="decompressione">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/Positionend/FloatContentComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/Positionend/IntContentComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/Positionend/StringContentComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/base/element/FloatBaseElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/base/element/IntBaseElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/base/element/StringBaseElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/positionend/ColumnPositioned.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/positionend/DatabaseCSVPositioned.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Column.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/DatabaseCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/DatabaseCSV.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/BaseElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/BaseElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/FloatPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/FloatPositionedElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/IntPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/IntPositionedElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/PositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/PositionedElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/StringPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/StringPositionedElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/example.csv.ALG_GZIP.RER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/MainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/FloatContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/Base/FloatContentComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/IntContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/Base/IntContentComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/PositionalComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/Positionend/PositionalComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/StringContentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/comparator/Base/StringContentComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/base/ColumnBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/DatabaseCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/base/DatabaseCSVBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/BaseElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/base/element/BaseElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/FloatPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/positionend/element/FloatPositionedElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/IntPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/positionend/element/IntPositionedElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/PositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/positionend/element/PositionedElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unisa/di/wrapper/StringPositionedElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unisa/di/table/positionend/element/StringPositionedElement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +68,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/play_/IdeaProjects/CompressioneDati/src/main/resources",
+    "last_opened_file_path": "C:/Users/play_/IdeaProjects/CompressioneDati/src/main/java/it/unisa/di/comparator/Base",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,13 +81,37 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\play_\IdeaProjects\CompressioneDati\src\main\java\it\unisa\di\comparator\Base" />
+      <recent name="C:\Users\play_\IdeaProjects\CompressioneDati\src\main\java\it\unisa\di\comparator\Positionend" />
       <recent name="C:\Users\play_\IdeaProjects\CompressioneDati\src\main\resources" />
+      <recent name="C:\Users\play_\IdeaProjects\CompressioneDati\src\main\java\it\unisa\di\wrapper\base" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.unisa.di.table" />
       <recent name="it.unisa.di.wrapper.base" />
       <recent name="it.unisa.di.comparator" />
       <recent name="it.unisa.di.wrapper" />
     </key>
+  </component>
+  <component name="RunManager" selected="Application.MainTest">
+    <configuration name="MainTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.unisa.di.MainTest" />
+      <module name="CompressioneDati" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unisa.di.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -106,6 +141,8 @@
       <workItem from="1672757584276" duration="10733000" />
       <workItem from="1673083453168" duration="4242000" />
       <workItem from="1673090523197" duration="7213000" />
+      <workItem from="1673255284593" duration="61000" />
+      <workItem from="1673256179971" duration="5905000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1669504719963</created>
@@ -156,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673091793228</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="decompressione">
+      <created>1673255332180</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673255332180</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +222,8 @@
     <MESSAGE value="fase 2 + refactoring consigliato da Teresa" />
     <MESSAGE value="fase 3" />
     <MESSAGE value="ready for test" />
-    <option name="LAST_COMMIT_MESSAGE" value="ready for test" />
+    <MESSAGE value="decompressione" />
+    <option name="LAST_COMMIT_MESSAGE" value="decompressione" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -191,7 +236,7 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="currentElement" />
+        <watch expression="currentColumnPositions" />
       </configuration>
     </watches-manager>
   </component>

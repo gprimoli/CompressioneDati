@@ -1,4 +1,6 @@
-package it.unisa.di.wrapper;
+package it.unisa.di.table.positionend.element;
+
+import it.unisa.di.table.base.element.BaseElement;
 
 abstract public class PositionedElement<T> extends BaseElement<T> {
     private int pos;

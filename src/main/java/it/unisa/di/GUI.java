@@ -1,6 +1,7 @@
 package it.unisa.di;
 
-import it.unisa.di.table.DatabaseCSV;
+
+import it.unisa.di.table.positionend.DatabaseCSVPositioned;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -81,7 +82,7 @@ public class GUI {
 
             out = in + "_ALG_" + selectedItem.label.toUpperCase() + ".RER";
             try {
-                DatabaseCSV db = new DatabaseCSV(new FileReader(in),this);
+                DatabaseCSVPositioned db = new DatabaseCSVPositioned(new FileReader(in),this);
                 db.compress(new FileOutputStream(out), selectedItem.value, this);
             } catch (FileNotFoundException e) {
                 JOptionPane.showMessageDialog(null, "Path del file insesistente!",
@@ -104,7 +105,7 @@ public class GUI {
 
             out = in.split("_ALG_")[0] + "_decompress.csv";
             try {
-                DatabaseCSV db = DatabaseCSV.decompress(new FileInputStream(in), selectedItem.value,this);
+                DatabaseCSVPositioned db = DatabaseCSVPositioned.decompress(new FileInputStream(in), selectedItem.value,this);
                 db.save(new FileWriter(out));
                 addToLog("Fine salvataggio file decompresso");
             } catch (FileNotFoundException e) {

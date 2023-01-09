@@ -1,4 +1,4 @@
-package it.unisa.di.wrapper;
+package it.unisa.di.table.base.element;
 
 import java.io.Serial;
 import java.io.Serializable;
